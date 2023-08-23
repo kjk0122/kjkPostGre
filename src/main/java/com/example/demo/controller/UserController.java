@@ -19,14 +19,6 @@ import javax.servlet.http.HttpServletResponse;
 @RequiredArgsConstructor
 public class UserController {
     private final UserService userService;
-    @GetMapping("/signup")
-    public ModelAndView signupPage() {
-        return new ModelAndView("signup");
-    }
-    @GetMapping("/login")
-    public ModelAndView loginPage() {
-        return new ModelAndView("login");
-    }
     @PostMapping("/signup")
     @ApiOperation(value = "회원가입")
     public ResponseEntity<?> signup(@RequestBody SignupRequestDto signupRequestDto) {
@@ -40,5 +32,10 @@ public class UserController {
     public String login(@RequestBody LoginRequestDto loginRequestDto, HttpServletResponse response) {
         userService.login(loginRequestDto, response);
         return "success";
+    }
+    @GetMapping("/hello")
+    @ApiOperation(value = "안녕")
+    public String hello() {
+        return "hello";
     }
 }

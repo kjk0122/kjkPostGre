@@ -17,9 +17,7 @@ import java.util.regex.Pattern;
 @RequiredArgsConstructor
 public class UserService {
     private final UserRepository userRepository;
-    private final PasswordEncoder passwordEncoder;
     String pt = "^[a-z\\\\d`~!@#$%^&*()-_=+]{4,10}$"; String ptt = "^[a-zA-Z\\\\d`~!@#$%^&*()-_=+]{8,15}$";
-
     @Transactional
     public User signup(SignupRequestDto signupRequestDto) {
         //이름, 비밀번호 대조를 위해 값을 뽑아놓음
@@ -42,7 +40,7 @@ public class UserService {
             throw new IllegalArgumentException("중복된 사용자가 존재합니다.");
         }
         //저장을 바로 하면 안되고 encoding해서 저장하기
-        String password = passwordEncoder.encode(pwcheck);
+        String password = pwcheck;
         //등록등록
         User user = new User(username, password);
         User savedUser = userRepository.save(user);
@@ -58,7 +56,7 @@ public class UserService {
                 () -> new IllegalArgumentException("등록된 사용자가 없습니다.")
         );
         // 비밀번호 확인
-        if(!passwordEncoder.matches(password, user.getPassword())){
+        if(password!=user.getPassword()){
             throw  new IllegalArgumentException("비밀번호가 일치하지 않습니다.");
         }
     }

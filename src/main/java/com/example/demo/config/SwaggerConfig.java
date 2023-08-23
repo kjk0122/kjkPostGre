@@ -15,14 +15,16 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 public class SwaggerConfig {
     @Bean
     public Docket api() {
-        return new Docket(DocumentationType.SWAGGER_2)
+        return new Docket(DocumentationType.OAS_30)
                 .ignoredParameterTypes(AuthenticationPrincipal.class)
+                .useDefaultResponseMessages(false)
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("com.example.demo.controller"))
                 .paths(PathSelectors.any())
                 .build()
                 .apiInfo(apiInfo());
     }
+
 //테스트
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
@@ -30,6 +32,6 @@ public class SwaggerConfig {
                 .description("공부공부.")
                 .version("1.0")
                 .build();
-        // 완료가 되었으면 오른쪽 URL 로 접속 => http://localhost:8080/swagger-ui.html
+        // 완료가 되었으면 오른쪽 URL 로 접속 => http://localhost:8080/swagger-ui/index.html#/
     }
 }

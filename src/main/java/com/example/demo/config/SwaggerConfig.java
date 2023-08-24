@@ -10,6 +10,7 @@ import springfox.documentation.service.ApiInfo;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
+
 @EnableSwagger2
 @Configuration
 public class SwaggerConfig {
@@ -25,7 +26,7 @@ public class SwaggerConfig {
                 .apiInfo(apiInfo());
     }
 
-//테스트
+    //테스트
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
                 .title("스웨거 설정하기")

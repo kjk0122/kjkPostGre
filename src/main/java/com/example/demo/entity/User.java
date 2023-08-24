@@ -20,7 +20,7 @@ public class User {
     private String username;
 
     @Column(nullable = false)
-        private String password;
+    private String password;
 
     public User(String username, String password) {
         this.username = username;

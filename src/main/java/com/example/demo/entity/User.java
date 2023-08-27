@@ -20,7 +20,13 @@ public class User {
     private String username;
 
     @Column(nullable = false)
+    private String nickname;
+
+    @Column(nullable = false)
     private String password;
+
+    @Column(nullable = false)
+    private String sex;
 
     public User(String username, String password) {
         this.username = username;

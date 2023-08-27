@@ -35,10 +35,4 @@ public class UserController {
         userService.login(loginRequestDto, response);
         return "success";
     }
-
-    @GetMapping("/hello")
-    @ApiOperation(value = "안녕")
-    public String hello() {
-        return "hello";
-    }
 }

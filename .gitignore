@@ -23,7 +23,6 @@ bin/
 *.ipr
 out/
 !**/src/main/**/out/
-**/application.properties
 !**/src/test/**/out/
 
 ### NetBeans ###
@@ -35,3 +34,6 @@ out/
 
 ### VS Code ###
 .vscode/
+
+#application.properties
+application.properties

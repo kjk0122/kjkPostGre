@@ -14,7 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletResponse;
 
 
-@Controller
+@RestController
 @RequestMapping("/user")
 @RequiredArgsConstructor
 public class UserController {
@@ -34,5 +34,12 @@ public class UserController {
     public String login(@RequestBody LoginRequestDto loginRequestDto, HttpServletResponse response) {
         userService.login(loginRequestDto, response);
         return "success";
+    }
+
+    @DeleteMapping("/delete/{id}")
+    @ApiOperation(value = "회원탈퇴")
+    public String signOut(@PathVariable Long id) {
+        userService.deleteUser(id);
+        return "감사합니다.";
     }
 }

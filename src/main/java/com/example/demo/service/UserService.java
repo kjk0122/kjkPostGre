@@ -5,11 +5,12 @@ import com.example.demo.dto.SignupRequestDto;
 import com.example.demo.entity.User;
 import com.example.demo.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.servlet.http.HttpServletResponse;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.regex.Pattern;
 
@@ -62,5 +63,9 @@ public class UserService {
         if (password != user.getPassword()) {
             throw new IllegalArgumentException("비밀번호가 일치하지 않습니다.");
         }
+    }
+    @Transactional
+    public void deleteUser(Long id) {
+            userRepository.deleteById(id);
     }
 }

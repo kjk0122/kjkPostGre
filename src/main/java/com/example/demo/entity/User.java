@@ -19,18 +19,22 @@ public class User {
     @Column(nullable = false)
     private String username;
 
-//    @Column(nullable = false)
-//    private String nickname;
+    @Column
+    private String nickname;
 
     @Column(nullable = false)
     private String password;
 
-//    @Column(nullable = false)
-//    private String sex;
+    @Column
+    private String sex;
+
+    @Column(nullable = false)
+    private Float rate;
 
     public User(String username, String password) {
         this.username = username;
         this.password = password;
+        this.rate=0f;
     }
 
 }

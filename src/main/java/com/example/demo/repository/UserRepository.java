@@ -11,6 +11,7 @@ import java.util.Optional;
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
     Optional<User> findByUsername(String username);
-    @Query(value="delete from \"public\".users where users.id > :id", nativeQuery = true)
-    void deleteById(@Param(value = "id") Long id);
+
+    @Override
+    void deleteById(Long id);
 }

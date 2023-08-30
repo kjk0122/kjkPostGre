@@ -36,7 +36,7 @@ public class UserController {
         return "success";
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     @ApiOperation(value = "회원탈퇴")
     public String signOut(@PathVariable Long id) {
         userService.deleteUser(id);

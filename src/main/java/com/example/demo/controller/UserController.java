@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.dto.LoginRequestDto;
 import com.example.demo.dto.SignupRequestDto;
+import com.example.demo.entity.User;
 import com.example.demo.service.UserService;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 
 
 @RestController
@@ -22,7 +24,7 @@ public class UserController {
 
     @PostMapping("/signup")
     @ApiOperation(value = "회원가입")
-    public ResponseEntity<?> signup(@RequestBody SignupRequestDto signupRequestDto) {
+    public ResponseEntity<?> signup(@Valid @RequestBody SignupRequestDto signupRequestDto) {
         userService.signup(signupRequestDto);
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body("회원가입이 완료되었습니다.");

@@ -3,8 +3,12 @@ package com.example.demo.entity;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 
 @Getter
@@ -23,6 +27,8 @@ public class User {
     private String nickname;
 
     @Column(nullable = false)
+    @Pattern(regexp = "^[a-zA-Z\\\\d`~!@#$%^&*()-_=+]{8,15}$", message = "비밀번호는 영문 대,소문자와 숫자,적어도 1개 이상씩 포함된 8 ~ 15자의 비밀번호여야 합니다.")
+    @NotBlank(message = "비밀번호는 필수 값 입니다.")
     private String password;
 
     @Column

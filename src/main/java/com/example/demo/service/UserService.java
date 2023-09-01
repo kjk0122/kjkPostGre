@@ -22,16 +22,13 @@ public class UserService {
 
     @Transactional
     public User signup(SignupRequestDto signupRequestDto) {
-        //이름, 비밀번호 대조를 위해 값을 뽑아놓음
-        String username = signupRequestDto.getUsername();
-
         // 회원 중복 확인
-        Optional<User> found = userRepository.findByUsername(username);
+        Optional<User> found = userRepository.findByUsername(signupRequestDto.getUsername());
         if (found.isPresent()) {
             throw new IllegalArgumentException("중복된 사용자가 존재합니다.");
         }
         //등록등록
-        User user = new User(username, signupRequestDto.getPassword());
+        User user = new User(signupRequestDto.getUsername(), signupRequestDto.getPassword(), signupRequestDto.getNickname());
         User savedUser = userRepository.save(user);
         return savedUser;
     }

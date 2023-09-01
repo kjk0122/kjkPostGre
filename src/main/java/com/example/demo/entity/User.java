@@ -38,9 +38,10 @@ public class User {
     @Column(nullable = false)
     private Float rate;
 
-    public User(String username, String password) {
+    public User(String username, String password, String nickname) {
         this.username = username;
         this.password = password;
+        this.nickname = nickname;
         this.rate=0f;
     }
 

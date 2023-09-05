@@ -3,6 +3,7 @@ package com.example.demo.service;
 import com.example.demo.dto.LoginRequestDto;
 import com.example.demo.dto.SignupRequestDto;
 import com.example.demo.entity.User;
+import com.example.demo.jwt.JwtUtil;
 import com.example.demo.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -17,8 +18,7 @@ import java.util.regex.Pattern;
 @RequiredArgsConstructor
 public class UserService {
     private final UserRepository userRepository;
-    String pt = "^[a-z\\\\d`~!@#$%^&*()-_=+]{4,10}$";
-    String ptt = "^[a-zA-Z\\\\d`~!@#$%^&*()-_=+]{8,15}$";
+    private final JwtUtil jwtUtil;
 
     @Transactional
     public User signup(SignupRequestDto signupRequestDto) {
@@ -46,6 +46,8 @@ public class UserService {
         if (!Objects.equals(password, user.getPassword())) {
             throw new IllegalArgumentException("비밀번호가 일치하지 않습니다.");
         }
+        //토큰을 생성해서 유저에게 줌
+        response.addHeader(JwtUtil.AUTHORIZATION_HEADER, jwtUtil.createToken(user.getUsername()));
     }
     @Transactional
     public void deleteUser(Long id) {

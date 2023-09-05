@@ -22,7 +22,7 @@ public class YaguController {
     private final YaguService yaguService;
 
     @PostMapping("/game")
-    @ApiOperation(value = "회원가입")
+    @ApiOperation(value = "야구게임")
     public String game(@Valid @RequestBody NumberSubmitDto numberSubmitDto) {
         return yaguService.game(numberSubmitDto);
     }

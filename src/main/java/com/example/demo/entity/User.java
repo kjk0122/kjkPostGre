@@ -35,6 +35,9 @@ public class User {
     @Column
     private String sex;
 
+    @Column
+    private int count;
+
     @Column(nullable = false)
     private Float rate;
 
@@ -42,7 +45,8 @@ public class User {
         this.username = username;
         this.password = password;
         this.nickname = nickname;
-        this.rate=0f;
+        this.count = 0;
+        this.rate = 0f;
     }
 
 }

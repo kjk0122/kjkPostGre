@@ -1,19 +1,15 @@
 package com.example.demo.entity;
 
 
-import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.Setter;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
-import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
 
 
 @Getter
+@Setter
 @NoArgsConstructor
 @Entity(name = "users")
 public class User {

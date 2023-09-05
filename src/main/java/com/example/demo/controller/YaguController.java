@@ -1,17 +1,15 @@
 package com.example.demo.controller;
 
 import com.example.demo.dto.NumberSubmitDto;
-import com.example.demo.dto.SignupRequestDto;
 import com.example.demo.service.YaguService;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 @RestController
@@ -23,7 +21,7 @@ public class YaguController {
 
     @PostMapping("/game")
     @ApiOperation(value = "야구게임")
-    public String game(@Valid @RequestBody NumberSubmitDto numberSubmitDto) {
-        return yaguService.game(numberSubmitDto);
+    public String game(@Valid @RequestBody NumberSubmitDto numberSubmitDto, HttpServletRequest request) {
+        return yaguService.game(numberSubmitDto, request);
     }
 }

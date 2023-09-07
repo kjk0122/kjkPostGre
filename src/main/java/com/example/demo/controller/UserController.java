@@ -32,10 +32,11 @@ public class UserController {
 
     @PostMapping("/login")
     @ApiOperation(value = "로그인")
-    @ResponseBody
-    public String login(@RequestBody LoginRequestDto loginRequestDto, HttpServletResponse response) {
+    public ResponseEntity<?> login(@RequestBody LoginRequestDto loginRequestDto, HttpServletResponse response) {
         userService.login(loginRequestDto, response);
-        return "success";
+
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body("로그인 완료되었습니다.");
     }
 
     @DeleteMapping("/{id}")

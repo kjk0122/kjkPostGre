@@ -2,15 +2,12 @@ package com.example.demo.controller;
 
 import com.example.demo.dto.LoginRequestDto;
 import com.example.demo.dto.SignupRequestDto;
-import com.example.demo.entity.User;
 import com.example.demo.service.UserService;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;

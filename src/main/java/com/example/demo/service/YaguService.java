@@ -53,7 +53,8 @@ public class YaguService {
             }
             if (S == 4) {
                 user.setCount(1);
-                return "정답입니다!축하드립니다.";
+                user.setWin(user.getWin() + 1);
+                return "정답입니다!축하드립니다.\n 현재 당신의 승률은: " + rate(user) + " % 입니다.";
             } else if (S != 0 || B != 0) {
                 user.setCount(user.getCount() + 1);
                 return "스트라이크 갯수: " + S + " 볼 갯수: " + B + " 현재 라운드: " + round;
@@ -63,7 +64,9 @@ public class YaguService {
             }
         } else {
             user.setCount(1);
-            return "게임이 종료되었습니다. 정답은"+user.getQuizNo()+" 였습니다.";
+            user.setLose(user.getLose() + 1);
+            rate(user);
+            return "게임이 종료되었습니다. 정답은" + user.getQuizNo() + " 였습니다.\n 현재 당신의 승률은: " + rate(user) + " % 입니다.";
         }
     }
 
@@ -81,5 +84,11 @@ public class YaguService {
             sb.append(nums.get(i));
         }
         return sb.toString();
+    }
+
+    public float rate(User user) {
+        float val = Math.round(100f * user.getWin() / (user.getWin() + user.getLose()));
+        user.setRate(val);
+        return val;
     }
 }

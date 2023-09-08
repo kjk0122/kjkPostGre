@@ -29,21 +29,18 @@ public class User {
     private String password;
 
     @Column
-    private String quizNo;
+    private String quizNo="0000";
 
     @Column
-    private int count;
+    private int count=1;
 
     @Column(nullable = false)
-    private Float rate;
+    private Float rate=0f;
 
     public User(String username, String password, String nickname) {
         this.username = username;
         this.password = password;
         this.nickname = nickname;
-        this.count = 1;
-        this.rate = 0f;
-        this.quizNo = "0000";
     }
 
 }

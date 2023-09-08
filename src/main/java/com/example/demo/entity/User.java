@@ -29,7 +29,7 @@ public class User {
     private String password;
 
     @Column
-    private String sex;
+    private String quizNo;
 
     @Column
     private int count;
@@ -41,8 +41,9 @@ public class User {
         this.username = username;
         this.password = password;
         this.nickname = nickname;
-        this.count = 0;
+        this.count = 1;
         this.rate = 0f;
+        this.quizNo = "0000";
     }
 
 }

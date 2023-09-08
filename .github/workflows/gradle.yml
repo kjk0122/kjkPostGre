@@ -16,6 +16,9 @@ on:
 permissions:
   contents: read
 
+dark: false
+author: kjk
+ui:
 jobs:
   # Label of the container job
   container-job:

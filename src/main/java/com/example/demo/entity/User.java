@@ -6,6 +6,9 @@ import lombok.Setter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+//import javax.validation.constraints.Pattern;
+import java.util.HashMap;
+import java.util.Map;
 
 
 @Getter
@@ -30,14 +33,12 @@ public class User {
 
     @Column
     private String quizNo = "0000";
-
     @Column
     private int count = 1;
-    private float win = 0;
-    private float lose = 0;
-
-    @Column(nullable = false)
-    private Float rate = 0f;
+    @ElementCollection//게임 기록들을 남김.
+    @CollectionTable(name = "user_log")
+    @MapKeyColumn(name = "Gameplay_history")
+    private Map<Integer, String> log = new HashMap<>();
 
     public User(String username, String password, String nickname) {
         this.username = username;
@@ -45,4 +46,7 @@ public class User {
         this.nickname = nickname;
     }
 
+    public void setLog(int i, String s) {
+        this.log.put(i,s);
+    }
 }
